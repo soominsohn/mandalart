@@ -40,7 +40,8 @@ export default function MandaratCell({ position }: MandaratCellProps) {
     ? getSubGoalNumber(linkedSubGoal)
     : null;
 
-  const isEditable = !isLinkedCenter;
+  // All cells are now editable, including linked centers
+  const isEditable = true;
 
   useEffect(() => {
     if (isEditing && inputRef.current) {
@@ -51,12 +52,22 @@ export default function MandaratCell({ position }: MandaratCellProps) {
 
   const handleStartEdit = () => {
     if (!isEditable) return;
-    setEditValue(cell?.title || '');
+    // For linked center, use the linked cell's title
+    if (isLinkedCenter && linkedCell) {
+      setEditValue(linkedCell.title || '');
+    } else {
+      setEditValue(cell?.title || '');
+    }
     setIsEditing(true);
   };
 
   const handleSave = () => {
-    updateCellTitle(position, editValue.trim());
+    // For linked center, update the original subGoal cell in the center block
+    if (isLinkedCenter && linkedSubGoal !== null) {
+      updateCellTitle(linkedSubGoal, editValue.trim());
+    } else {
+      updateCellTitle(position, editValue.trim());
+    }
     setIsEditing(false);
   };
 
@@ -122,8 +133,7 @@ export default function MandaratCell({ position }: MandaratCellProps) {
         relative flex items-center justify-center
         aspect-square rounded sm:rounded-lg border
         ${currentStyle.bg} ${currentStyle.border} ${currentStyle.shadow}
-        ${isEditable && !isEditing ? 'cursor-pointer active:scale-95 sm:hover:shadow-lg sm:hover:scale-[1.02]' : ''}
-        ${isLinkedCenter ? 'cursor-default opacity-90' : ''}
+        ${!isEditing ? 'cursor-pointer active:scale-95 sm:hover:shadow-lg sm:hover:scale-[1.02]' : ''}
         ${isCenter ? 'ring-1 sm:ring-2 ring-amber-400/50 ring-offset-1 sm:ring-offset-2' : ''}
       `}
       onClick={!isEditing && isEditable ? handleStartEdit : undefined}

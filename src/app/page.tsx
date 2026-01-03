@@ -22,9 +22,11 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-8">
+    <div className="min-h-screen bg-gray-50 pb-8 overflow-x-hidden">
       <Header gridRef={gridRef} />
-      <MandaratGrid ref={gridRef} />
+      <main className="px-3 sm:px-4">
+        <MandaratGrid ref={gridRef} />
+      </main>
     </div>
   );
 }

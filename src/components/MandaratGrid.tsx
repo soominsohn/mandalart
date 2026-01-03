@@ -7,7 +7,7 @@ const MandaratGrid = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <div
       ref={ref}
-      className="w-full max-w-3xl mx-auto p-3 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-xl"
+      className="w-full max-w-5xl mx-auto p-3 sm:p-6 lg:p-8 bg-white rounded-xl sm:rounded-2xl shadow-xl"
     >
       {/* 3x3 grid of blocks */}
       <div className="grid grid-cols-3 gap-1.5 sm:gap-3">

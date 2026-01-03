@@ -11,7 +11,7 @@
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.89.0",
-    "html-to-image": "^1.11.13",
+    "modern-screenshot": "^4.6.7",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
