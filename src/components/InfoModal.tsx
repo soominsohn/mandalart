@@ -11,17 +11,17 @@ const EXAMPLE_IMAGES = [
   {
     title: '오타니 쇼헤이 만다라트',
     description: '고등학교 시절 작성한 유명한 목표 설정표',
-    url: '/examples/ohtani.png',
+    url: '/examples/ohtani.jpg',
   },
   {
-    title: '학습 계획 예시',
-    description: '학업 목표를 세분화한 만다라트',
-    url: '/examples/study.png',
+    title: '신년 목표 계획',
+    description: '새해 목표를 체계적으로 세분화한 만다라트',
+    url: '/examples/newyear.jpg',
   },
   {
-    title: '커리어 계획 예시',
-    description: '직업적 성장 목표를 담은 만다라트',
-    url: '/examples/career.png',
+    title: '프로젝트 관리',
+    description: '프로젝트 목표와 실행 계획을 담은 만다라트',
+    url: '/examples/project.jpg',
   },
 ];
 
