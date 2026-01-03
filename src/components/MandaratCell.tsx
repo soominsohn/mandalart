@@ -127,6 +127,9 @@ export default function MandaratCell({ position }: MandaratCellProps) {
     ? '세부 목표'
     : '';
 
+  // Character limit for all cells
+  const maxLength = 20;
+
   return (
     <div
       className={`
@@ -168,13 +171,14 @@ export default function MandaratCell({ position }: MandaratCellProps) {
             ${subGoalNumber !== null ? 'pt-2 sm:pt-3' : ''}
           `}
           placeholder={placeholder}
-          maxLength={100}
+          maxLength={maxLength}
         />
       ) : (
         <span
           className={`
-            text-[10px] sm:text-[13px] leading-tight sm:leading-snug text-center break-keep
+            text-[10px] sm:text-[13px] leading-tight sm:leading-snug text-center
             font-medium px-0.5 sm:px-1.5
+            overflow-hidden line-clamp-3
             ${currentStyle.text}
             ${!displayTitle ? 'opacity-30 font-normal text-[8px] sm:text-[11px]' : ''}
             ${subGoalNumber !== null ? 'pt-1 sm:pt-2' : ''}
