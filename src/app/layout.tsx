@@ -4,6 +4,9 @@ import './globals.css';
 export const metadata: Metadata = {
   title: '만다라트 - 목표 달성 플래너',
   description: '9x9 만다라트 그리드로 핵심 목표와 세부 목표를 체계적으로 설정하세요.',
+  verification: {
+    google: 'MPJI7yzx4Omu10mFFyrLwyL9SkPN9aEmvP1mlX0bgWk',
+  },
 };
 
 export const viewport: Viewport = {
