@@ -1,7 +1,6 @@
 'use client';
 
 import { useCallback, useState, RefObject } from 'react';
-import AuthButton from './AuthButton';
 import InfoModal from './InfoModal';
 
 interface HeaderProps {
@@ -125,7 +124,6 @@ export default function Header({ gridRef }: HeaderProps) {
             )}
             <span className="ml-1.5">{isExporting ? '저장 중...' : '이미지 저장'}</span>
           </button>
-          <AuthButton />
         </div>
       </header>
 
