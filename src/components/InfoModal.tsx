@@ -11,17 +11,12 @@ const EXAMPLE_IMAGES = [
   {
     title: '오타니 쇼헤이 만다라트',
     description: '고등학교 시절 작성한 유명한 목표 설정표',
-    url: '/examples/ohtani.jpg',
+    url: '/example-baseball.png',
   },
   {
     title: '신년 목표 계획',
     description: '새해 목표를 체계적으로 세분화한 만다라트',
-    url: '/examples/newyear.jpg',
-  },
-  {
-    title: '프로젝트 관리',
-    description: '프로젝트 목표와 실행 계획을 담은 만다라트',
-    url: '/examples/project.jpg',
+    url: '/example.png',
   },
 ];
 
