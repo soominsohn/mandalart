@@ -12,6 +12,7 @@ interface HeaderProps {
 export default function Header({ gridRef }: HeaderProps) {
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [isResetModalOpen, setIsResetModalOpen] = useState(false);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [isImporting, setIsImporting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -60,6 +61,11 @@ export default function Header({ gridRef }: HeaderProps) {
   }, [reset]);
 
   const handleImportClick = useCallback(() => {
+    setIsImportModalOpen(true);
+  }, []);
+
+  const handleImportConfirm = useCallback(() => {
+    setIsImportModalOpen(false);
     fileInputRef.current?.click();
   }, []);
 
@@ -276,10 +282,16 @@ export default function Header({ gridRef }: HeaderProps) {
               <h3 className="text-lg font-bold text-center text-slate-800 mb-2">
                 새로 만들기
               </h3>
-              <p className="text-sm text-center text-slate-600 mb-6">
+              <p className="text-sm text-center text-slate-600 mb-3">
                 현재 작성한 내용이 모두 삭제됩니다.<br />
                 계속하시겠습니까?
               </p>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-5">
+                <p className="text-xs text-blue-700 text-center">
+                  <strong>Tip:</strong> 삭제 전에 &apos;이미지 저장&apos;을 하면<br />
+                  나중에 &apos;이어하기&apos;로 복원할 수 있어요!
+                </p>
+              </div>
               <div className="flex gap-3">
                 <button
                   onClick={() => setIsResetModalOpen(false)}
@@ -292,6 +304,60 @@ export default function Header({ gridRef }: HeaderProps) {
                   className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
                 >
                   삭제하고 새로 만들기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Import Guide Modal */}
+      {isImportModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setIsImportModalOpen(false)}
+          />
+
+          {/* Modal */}
+          <div className="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div className="p-6">
+              <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 bg-blue-100 rounded-full">
+                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold text-center text-slate-800 mb-2">
+                이어하기
+              </h3>
+              <p className="text-sm text-center text-slate-600 mb-4">
+                이전에 &apos;이미지 저장&apos;으로 다운로드한<br />
+                PNG 이미지를 업로드해주세요.
+              </p>
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-5">
+                <p className="text-xs text-amber-700 text-center">
+                  이 앱에서 저장한 이미지만 불러올 수 있습니다.<br />
+                  (일반 이미지나 스크린샷은 지원되지 않습니다)
+                </p>
+              </div>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setIsImportModalOpen(false)}
+                  className="flex-1 px-4 py-2.5 text-sm font-medium text-slate-700 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors"
+                >
+                  취소
+                </button>
+                <button
+                  onClick={handleImportConfirm}
+                  className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors"
+                >
+                  이미지 선택
                 </button>
               </div>
             </div>
