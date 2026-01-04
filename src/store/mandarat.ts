@@ -38,6 +38,8 @@ interface MandaratStore {
   // Actions
   initialize: () => void;
   updateCellTitle: (position: number, title: string) => void;
+  reset: () => void;
+  loadFromData: (cells: { position: number; title: string }[]) => void;
 }
 
 export const useMandaratStore = create<MandaratStore>((set, get) => ({
@@ -79,5 +81,30 @@ export const useMandaratStore = create<MandaratStore>((set, get) => ({
 
     // Persist to localStorage
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedMandarat));
+  },
+
+  reset: () => {
+    const newMandarat = createDefaultMandarat();
+    set({ mandarat: newMandarat });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newMandarat));
+  },
+
+  loadFromData: (cells: { position: number; title: string }[]) => {
+    const newMandarat: Mandarat = {
+      id: generateId(),
+      title: '나의 만다라트',
+      cells: Array.from({ length: 81 }, (_, i) => {
+        const cellData = cells.find((c) => c.position === i);
+        return {
+          id: generateId(),
+          position: i,
+          title: cellData?.title || '',
+        };
+      }),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+    set({ mandarat: newMandarat });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newMandarat));
   },
 }));
