@@ -1,0 +1,27 @@
+{
+  "name": "만다라트 - 목표 달성 플래너",
+  "short_name": "만다라트",
+  "description": "오타니 쇼헤이가 사용한 만다라트 기법으로 당신의 꿈을 실현하세요. 9x9 그리드로 목표를 체계적으로 설정하고 관리하세요.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "lifestyle"],
+  "lang": "ko",
+  "dir": "ltr"
+}
